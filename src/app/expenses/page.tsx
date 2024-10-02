@@ -1,14 +1,6 @@
-import React from 'react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Progress } from '@/components/ui/progress';
+import NewExpenseDialog from '@/components/dialogs/new-expense-dialog'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -16,17 +8,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { File, ListFilter } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+} from '@/components/ui/dropdown-menu'
+import { Progress } from '@/components/ui/progress'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { File, ListFilter } from 'lucide-react'
 
 const data = [
   {
@@ -86,7 +72,7 @@ const data = [
     date: '2023-06-26',
     amount: 450.0,
   },
-];
+]
 
 const Expenses = () => {
   return (
@@ -97,12 +83,11 @@ const Expenses = () => {
             <CardHeader className="pb-3">
               <CardTitle>Your Expenses</CardTitle>
               <CardDescription className="max-w-lg text-balance leading-relaxed">
-                Introducing Our Dynamic Expenses Dashboard for Seamless
-                Management and Insightful Analysis.
+                Introducing Our Dynamic Expenses Dashboard for Seamless Management and Insightful Analysis.
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button>Create New Expense</Button>
+              <NewExpenseDialog />
             </CardFooter>
           </Card>
           <Card x-chunk="dashboard-05-chunk-1">
@@ -111,9 +96,7 @@ const Expenses = () => {
               <CardTitle className="text-4xl">$1,329</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-xs text-muted-foreground">
-                +25% from last week
-              </div>
+              <div className="text-xs text-muted-foreground">+25% from last week</div>
             </CardContent>
             <CardFooter>
               <Progress value={25} aria-label="25% increase" />
@@ -125,9 +108,7 @@ const Expenses = () => {
               <CardTitle className="text-4xl">$5,329</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-xs text-muted-foreground">
-                +10% from last month
-              </div>
+              <div className="text-xs text-muted-foreground">+10% from last month</div>
             </CardContent>
             <CardFooter>
               <Progress value={12} aria-label="12% increase" />
@@ -144,11 +125,7 @@ const Expenses = () => {
             <div className="ml-auto flex items-center gap-2">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="h-7 gap-1 text-sm"
-                  >
+                  <Button variant="outline" size="sm" className="h-7 gap-1 text-sm">
                     <ListFilter className="h-3.5 w-3.5" />
                     <span className="sr-only sm:not-sr-only">Filter</span>
                   </Button>
@@ -156,9 +133,7 @@ const Expenses = () => {
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Filter by</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuCheckboxItem checked>
-                    Fulfilled
-                  </DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem checked>Fulfilled</DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem>Declined</DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem>Refunded</DropdownMenuCheckboxItem>
                 </DropdownMenuContent>
@@ -173,21 +148,15 @@ const Expenses = () => {
             <Card x-chunk="dashboard-05-chunk-3">
               <CardHeader className="px-7">
                 <CardTitle>Expenses</CardTitle>
-                <CardDescription>
-                  Recent expenses from your tiyuli.
-                </CardDescription>
+                <CardDescription>Recent expenses from your tiyuli.</CardDescription>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow>
                       <TableHead>Store name?</TableHead>
-                      <TableHead className="hidden sm:table-cell">
-                        Type
-                      </TableHead>
-                      <TableHead className="hidden md:table-cell">
-                        Date
-                      </TableHead>
+                      <TableHead className="hidden sm:table-cell">Type</TableHead>
+                      <TableHead className="hidden md:table-cell">Date</TableHead>
                       <TableHead className="text-right">Amount</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -199,19 +168,11 @@ const Expenses = () => {
                       >
                         <TableCell>
                           <div className="font-medium">{item.name}</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            {item.email}
-                          </div>
+                          <div className="hidden text-sm text-muted-foreground md:inline">{item.email}</div>
                         </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          {item.type}
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          {item.date}
-                        </TableCell>
-                        <TableCell className="text-right">
-                          ¥{item.amount.toFixed(2)}
-                        </TableCell>
+                        <TableCell className="hidden sm:table-cell">{item.type}</TableCell>
+                        <TableCell className="hidden md:table-cell">{item.date}</TableCell>
+                        <TableCell className="text-right">¥{item.amount.toFixed(2)}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -222,7 +183,7 @@ const Expenses = () => {
         </Tabs>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default Expenses;
+export default Expenses
