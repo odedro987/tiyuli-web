@@ -27,7 +27,7 @@ export default function RootLayout({
               <Navbar />
               <main className="flex min-h-screen w-full flex-1 flex-col bg-muted/40">
                 <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-                  <div className="px-4 sm:px-6">
+                  <div className="sm:px-6">
                     <Header />
                   </div>
                   <div className="">{children}</div>
