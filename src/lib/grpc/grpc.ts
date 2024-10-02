@@ -7,16 +7,19 @@ interface GrpcUnaryServiceInterface<P, R> {
   (message: P, callback: requestCallback<R>): ClientUnaryCall
 }
 
+type GrpcRequestType<T> = T extends GrpcUnaryServiceInterface<infer T, any> ? T : never
 type GrpcResponseType<T> = T extends GrpcUnaryServiceInterface<any, infer T> ? T : never
 
-export const promisifyGrpc = <
-  F extends (msg: any, metadata: Metadata, options: any, callback: requestCallback<any>) => ClientUnaryCall,
->(
+export const promisifyGrpc = <F extends GrpcUnaryServiceInterface<any, any>>(
   rpc: F
-): ((msg: Parameters<F>[0], metadata: Metadata) => Promise<GrpcResponseType<F> | undefined>) => {
-  return (msg: Parameters<F>[0], metadata: Metadata) => {
+): ((
+  msg: GrpcRequestType<F>,
+  metadata: Metadata,
+  options?: CallOptions
+) => Promise<GrpcResponseType<F> | undefined>) => {
+  return (msg: GrpcRequestType<F>, metadata: Metadata, options: CallOptions = {}) => {
     return new Promise((resolve, reject) => {
-      rpc(msg, metadata, {}, (error, response) => {
+      rpc(msg, metadata, options, (error, response) => {
         if (error) {
           reject(error)
         } else {

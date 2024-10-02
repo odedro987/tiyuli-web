@@ -1,10 +1,9 @@
+import { promisifyGrpc } from '@/lib/grpc/grpc'
 import { tiyuliClient } from '@/lib/tiyuli-service'
 import { google } from '@/proto/generated/google/protobuf/timestamp'
 import { tiyuli } from '@/proto/generated/new_expense'
 import { Metadata } from '@grpc/grpc-js'
 import { NextResponse } from 'next/server'
-import { error } from 'console'
-import { promisifyGrpc } from '@/lib/grpc/grpc'
 
 export async function GET(request: Request) {
   const basicAuthToken = Buffer.from(`Oded:567`).toString('base64')
