@@ -1,11 +1,11 @@
 'use client'
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
-  Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
+  Dialog as DialogShadcn,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
@@ -13,7 +13,7 @@ import { VariantProps } from 'class-variance-authority'
 import { LucideLoaderCircle } from 'lucide-react'
 import { ReactNode, useState } from 'react'
 
-interface DialogModalProps {
+interface DialogProps {
   trigger: string
   triggerVariant?: VariantProps<typeof buttonVariants>
   title?: string
@@ -22,6 +22,7 @@ interface DialogModalProps {
   cancelButtonText?: string
   showSubmitButton?: boolean
   showCancelButton?: boolean
+  className?: string
   disabled?: boolean
   loading?: boolean
   onSubmit?: () => {}
@@ -29,7 +30,7 @@ interface DialogModalProps {
   children: ReactNode
 }
 
-export function DialogModal(props: DialogModalProps) {
+export function Dialog(props: DialogProps) {
   const [open, setOpen] = useState(false)
   const {
     trigger,
@@ -40,6 +41,7 @@ export function DialogModal(props: DialogModalProps) {
     cancelButtonText = 'Cancel',
     showCancelButton = true,
     showSubmitButton = true,
+    className,
     disabled = false,
     loading = false,
     onSubmit = () => {},
@@ -48,13 +50,13 @@ export function DialogModal(props: DialogModalProps) {
   } = props
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <DialogShadcn open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant={triggerVariant.variant} size={triggerVariant.size}>
           {trigger}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className={className}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>
@@ -87,6 +89,6 @@ export function DialogModal(props: DialogModalProps) {
           )}
         </DialogFooter>
       </DialogContent>
-    </Dialog>
+    </DialogShadcn>
   )
 }

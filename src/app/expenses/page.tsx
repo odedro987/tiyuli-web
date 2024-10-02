@@ -12,7 +12,7 @@ import {
 import { Progress } from '@/components/ui/progress'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { File, ListFilter } from 'lucide-react'
+import { ListFilter } from 'lucide-react'
 
 const data = [
   {
@@ -138,10 +138,6 @@ const Expenses = () => {
                   <DropdownMenuCheckboxItem>Refunded</DropdownMenuCheckboxItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Button size="sm" variant="outline" className="h-7 gap-1 text-sm">
-                <File className="h-3.5 w-3.5" />
-                <span className="sr-only sm:not-sr-only">Export</span>
-              </Button>
             </div>
           </div>
           <TabsContent value="week">
