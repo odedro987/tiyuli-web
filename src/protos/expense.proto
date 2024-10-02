@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "github.com/odedro987/tiyuli-server/expense-api/proto";
+
+package tiyuli.expense;
+
+import "google/protobuf/timestamp.proto";
+
+message Expense {
+  string id = 1;
+  string user_id = 2;
+  string name = 3;
+  optional string note = 4;
+  repeated string types = 5;
+  google.protobuf.Timestamp payment_date = 6;
+  string currency_code = 7;
+  float amount = 8;
+}
