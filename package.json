@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen-proto": "npx protoc --proto_path=./src/protos --ts_out=./src/protos/generated ./src/protos/*.proto"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.11.3",
